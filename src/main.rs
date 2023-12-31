@@ -1,38 +1,79 @@
-use std::env::{self, Args};
-use rand::Rng;
+
+use std::{env, char};
+use rand::seq::SliceRandom;
 
 /// Default long 10
-const LONG = 10;
+const LENGTH: usize = 20;
 
-/// Long = Xn = L 
-/// LONG = 10
-/// Number = -n
-/// Letter = -l 
-/// Characters = -c
-
-fn longs (){
-    
+fn numbers() -> String {
+    let number: Vec<char> = "123456789".chars().collect();
+    let  random: String = (0..LENGTH).map(|_|{
+        *number.choose(&mut rand::thread_rng()).unwrap()
+        }
+    ).collect();
+    random
 }
 
-fn numbers() {
-    
+
+fn letter() -> String {
+    let letters: Vec<char> = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
+    let  random: String = (0..LENGTH).map(|_|{
+        *letters.choose(&mut rand::thread_rng()).unwrap()
+        }
+    ).collect();
+    random
 }
 
-fn letters() {
-    
+
+fn character() -> String {
+    let characters: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect();
+    let  random: String = (0..LENGTH).map(|_|{
+        *characters.choose(&mut rand::thread_rng()).unwrap()
+        }
+    ).collect();
+    random
 }
 
-fn characters() {
-    
-}
 
+
+fn combination() -> String {
+    let password: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
+    let  random: String = (0..LENGTH).map(|_|{
+        *password.choose(&mut rand::thread_rng()).unwrap()
+        }
+    ).collect();
+    random
+}
 
 fn main() {
     let args: Vec<String> = env::args().collect(); 
 
-    for argument in args.len(){
-        match argument {
-            
+    for argument in args.iter(){
+        match argument.as_str() {
+            "-n" | "--numbers" => {
+                let password = numbers();
+                println!("{}",password);    
+            },
+            "-l" | "--letter" => {
+                let password = letter();
+                println!("{}",password);
+            },
+            "-c" | "--character" => {
+                let password = character();
+                println!("{}",password);
+            },
+            "p" | "--password" => {
+                let password = combination();
+                println!("{}",password);  
+            },
+            _ => {
+            // Acciones para otros argumentos
+            }
         }
     }
+}
+
+#[cfg(test)]
+mod test {
+    
 }
