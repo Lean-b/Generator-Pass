@@ -1,4 +1,4 @@
-use std::{env, char, fmt::Arguments};
+use std::{env, char};
 use rand::seq::SliceRandom;
 
 const LENGTH: usize = 20;
@@ -57,7 +57,7 @@ fn main() {
                 println!("{}",password);
             },
             "-s" | "--symbol" => {
-                let password = character();
+                let password = symbol();
                 println!("{}",password);
             },
             "p" | "--password" => {
