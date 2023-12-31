@@ -69,3 +69,13 @@ fn combination() -> String {
 }
 ```
 **Ejemplo: G1}(FX2IocF[.'@zZnGp**
+### Comprobar contraseña
+* [Cómo crear una contraseña segura de NordPass](https://nordpass.com/es/secure-password/)
+* [Cómo verificar la seguridad de tus contraseñas de RoboForm](https://www.roboform.com/es/how-secure-is-my-password/)
+* [Verificador de contraseñas de Internxt](https://internxt.com/es/password-checker)
+
+### Recursos
+* [Cómo crear una contraseña segura de Google](https://support.google.com/accounts/answer/32040?hl=es-419)
+* [Cómo crear una contraseña segura](https://latam.kaspersky.com/resource-center/threats/how-to-create-a-strong-password)
+* [Cómo crear y usar contraseñas seguras](https://support.microsoft.com/es-es/windows/crear-y-usar-contrase%C3%B1as-seguras-c5cebb49-8c53-4f5e-2bc4-fe357ca048eb)
+
