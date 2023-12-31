@@ -27,6 +27,8 @@ fn numbers() -> String {
     random
 }
 ```
+**Ejemplo: 14117833877145556291**
+
 ### Letras: mayuscula y minuscula
 ```rust
 fn letter() -> String {
@@ -38,6 +40,8 @@ fn letter() -> String {
     random
 }
 ```
+**Ejemplo: nRTmaXWIbjQAtSHqPsQB**
+
 ### Simbolos
 ```rust
 fn symbol() -> String {
@@ -48,7 +52,10 @@ fn symbol() -> String {
     ).collect();
     random
 }
+
 ```
+**Ejemplo: #/?;$-&|@+:/}#';-({@**
+
 ### Combinacion
 Este tipo de contraseña es la recomendada ,es una combinacion de letras,numeros y simbolos,es mucho mas fuerte que solo poner letras o numeros.
 ```rust
@@ -61,4 +68,4 @@ fn combination() -> String {
     random
 }
 ```
-
+**Ejemplo: G1}(FX2IocF[.'@zZnGp**
