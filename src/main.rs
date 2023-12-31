@@ -1,8 +1,6 @@
-
-use std::{env, char};
+use std::{env, char, fmt::Arguments};
 use rand::seq::SliceRandom;
 
-/// Default long 10
 const LENGTH: usize = 20;
 
 fn numbers() -> String {
@@ -48,7 +46,7 @@ fn combination() -> String {
 fn main() {
     let args: Vec<String> = env::args().collect(); 
 
-    for argument in args.iter(){
+   for argument in args.iter(){
         match argument.as_str() {
             "-n" | "--numbers" => {
                 let password = numbers();
@@ -71,9 +69,4 @@ fn main() {
             }
         }
     }
-}
-
-#[cfg(test)]
-mod test {
-    
 }
