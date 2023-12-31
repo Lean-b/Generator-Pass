@@ -23,10 +23,10 @@ fn letter() -> String {
 }
 
 
-fn character() -> String {
-    let characters: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect();
+fn symbol() -> String {
+    let symbols: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect();
     let  random: String = (0..LENGTH).map(|_|{
-        *characters.choose(&mut rand::thread_rng()).unwrap()
+        *symbols.choose(&mut rand::thread_rng()).unwrap()
         }
     ).collect();
     random
@@ -56,7 +56,7 @@ fn main() {
                 let password = letter();
                 println!("{}",password);
             },
-            "-c" | "--character" => {
+            "-s" | "--symbol" => {
                 let password = character();
                 println!("{}",password);
             },
