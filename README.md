@@ -3,7 +3,7 @@ Para que nuestros datos esten seguros o redes sociales,cuentas de bancos y demas
 pensar que la contraseña es la primer capa de defensa ante un atacante(ciber delicuente).
 
 ## Como es una contraseña fuerte
-Una contraseña fuerte tiene que tener distintas combinacion y de una longitud de aproximado **8** caracteres.
+Una contraseña fuerte tiene que tener distintas combinacion y de una longitud de **8** caracteres o mas.
 
 Puede estar compuesta por:
 - **mayúsculas**
