@@ -1,21 +1,24 @@
 # ¿Contraseña fuerte?
-Para que nuestros datos esten seguros o redes sociales,cuentas de bancos y demas sitios web,necesitamos generar una contraseña fuerte,
-pensar que la contraseña es la primer capa de defensa ante un atacante(ciber delicuente).
 
-## Como es una contraseña fuerte
-Una contraseña fuerte tiene que tener distintas combinacion y de una longitud de **8** caracteres o mas.
+Para que nuestros datos estén seguros en redes sociales, cuentas de bancos y demás sitios web, necesitamos generar una contraseña fuerte. Pensemos que la contraseña es la primera capa de defensa ante un atacante (ciberdelincuente).
+
+# ¿Cómo es una contraseña fuerte?
+
+Una contraseña fuerte tiene que tener distintas combinaciones y de una longitud de 8 caracteres o más.
 
 Puede estar compuesta por:
-- **mayúsculas**
-- **minúsculas**
-- **símbolos**
-- **letras**
 
-## Codigo de ejemplo para generar contraseñas
+- Mayúsculas
+- Minúsculas
+- Símbolos
+- Letras
 
-Hice una pequeña herramienta basica en rust para poder realizar la explicacion y mostrar ejemplos,de como debe ser una contraseña segura y de como no debe ser.
+## Código de ejemplo para generar contraseñas
 
-Contraseña solamente de numero,letras o simbolos,son relativamente debiles y faciles de descubrir.
+Hice una pequeña herramienta básica en Rust para poder realizar la explicación y mostrar ejemplos, de cómo debe ser una contraseña segura y de cómo no debe ser.
+
+Contraseñas solamente de números, letras o símbolos, son relativamente débiles y fáciles de descubrir.
+
 ### Numeros
 ```rust
 fn numbers() -> String {
