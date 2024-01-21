@@ -1,6 +1,8 @@
 use std::{env, char};
 use rand::seq::SliceRandom;
 
+mod combinations;
+
 const LENGTH: usize = 20;
 
 fn numbers() -> String {
