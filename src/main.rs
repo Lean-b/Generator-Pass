@@ -65,7 +65,6 @@ fn main() {
                 println!("{}",password);  
             },
             _ => {
-            // Acciones para otros argumentos
             }
         }
     }
