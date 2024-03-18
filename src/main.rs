@@ -1,73 +1,65 @@
-use std::{env, char};
-use rand::seq::SliceRandom;
+use rand::seq::IteratorRandom;
+use std::{char, env};
 
-mod combinations;
-
-const LENGTH: usize = 20;
-
-fn numbers() -> String {
-    let number: Vec<char> = "123456789".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *number.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
+#[derive(Debug)]
+enum Types {
+    SYMBOL(Vec<char>),
+    NUMBER(Vec<char>),
+    LETTER(Vec<char>),
 }
 
-
-fn letter() -> String {
-    let letters: Vec<char> = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *letters.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
+#[derive(Debug)]
+struct Password {
+    typ: Types,
 }
 
+impl Password {
+    fn generator() {
+        let mut rng = rand::thread_rng();
+        
+        let symbol = Password {
+            typ: Types::SYMBOL("!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect()),
+        };
+        let number = Password {
+            typ: Types::NUMBER("123456789".chars().collect()),
+        };
+        let letter = Password {
+            typ: Types::LETTER(
+                "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz"
+                    .chars()
+                    .collect(),
+            ),
+        };
 
-fn symbol() -> String {
-    let symbols: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *symbols.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
-}
-
-
-
-fn combination() -> String {
-    let password: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *password.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
+        let combinator = match  {
+            
+        };
+    }
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect(); 
+    let args: Vec<String> = env::args().collect();
+    let pass = Password::generator();
 
-   for argument in args.iter(){
+    for argument in args.iter() {
         match argument.as_str() {
             "-n" | "--numbers" => {
                 let password = numbers();
-                println!("{}",password);    
-            },
+                println!("{}", password);
+            }
             "-l" | "--letter" => {
                 let password = letter();
-                println!("{}",password);
-            },
+                println!("{}", password);
+            }
             "-s" | "--symbol" => {
                 let password = symbol();
-                println!("{}",password);
-            },
+                println!("{}", password);
+            }
             "p" | "--password" => {
                 let password = combination();
-                println!("{}",password);  
-            },
-            _ => {
+                println!("{}", password);
             }
+            _ => {}
         }
     }
 }
