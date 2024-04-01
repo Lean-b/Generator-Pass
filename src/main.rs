@@ -1,73 +1,52 @@
 use std::{env, char};
 use rand::seq::SliceRandom;
 
-mod combinations;
+const DEFAULT_LENGTH: usize = 20;
 
-const LENGTH: usize = 20;
-
-fn numbers() -> String {
-    let number: Vec<char> = "123456789".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *number.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
-}
-
-
-fn letter() -> String {
-    let letters: Vec<char> = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *letters.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
-}
-
-
-fn symbol() -> String {
-    let symbols: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *symbols.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
-    random
-}
-
-
-
-fn combination() -> String {
-    let password: Vec<char> = "!@#$%^&*()_+-=[]{}|;':,./<>?123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars().collect();
-    let  random: String = (0..LENGTH).map(|_|{
-        *password.choose(&mut rand::thread_rng()).unwrap()
-        }
-    ).collect();
+fn generate_password(length: usize, chars: &[char]) -> String {
+    let random: String = (0..length).map(|_| {
+        *chars.choose(&mut rand::thread_rng()).unwrap()
+    }).collect();
     random
 }
 
 fn main() {
     let args: Vec<String> = env::args().collect(); 
+    let mut password_chars: Vec<char> = Vec::new();
+    let mut length = DEFAULT_LENGTH;
 
-   for argument in args.iter(){
+    for argument in args.iter() {
         match argument.as_str() {
             "-n" | "--numbers" => {
-                let password = numbers();
-                println!("{}",password);    
+                password_chars.extend("123456789".chars());
             },
-            "-l" | "--letter" => {
-                let password = letter();
-                println!("{}",password);
+            "-l" | "--letters" => {
+                password_chars.extend("ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars());
             },
-            "-s" | "--symbol" => {
-                let password = symbol();
-                println!("{}",password);
+            "-s" | "--symbols" => {
+                password_chars.extend("!@#$%^&*()_+-=[]{}|;':,./<>?".chars());
             },
-            "p" | "--password" => {
-                let password = combination();
-                println!("{}",password);  
+            "-p" | "--password" => {
+                // Here you can adjust the length if desired
+                // For example, if the user types "-p 15", it will generate a password of length 15
+                if let Some(arg) = args.iter().position(|x| x == argument) {
+                    if let Some(len) = args.get(arg + 1) {
+                        if let Ok(num) = len.parse::<usize>() {
+                            length = num;
+                        }
+                    }
+                }
             },
-            _ => {
-            }
+            _ => {}
         }
     }
+
+    if password_chars.is_empty() {
+        // Default to combining all character sets
+        password_chars.extend("!@#$%^&*()_+-=[]{}|;':,./<>?123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz".chars());
+    }
+
+    let password = generate_password(length, &password_chars);
+    println!("{}", password);
 }
+
